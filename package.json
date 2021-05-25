@@ -1,0 +1,24 @@
+{
+  "name": "egotistical-discord-bot",
+  "version": "1.0.0",
+  "description": "What the title says",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BearmanCodes/Egotistical-discord-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BearmanCodes/Egotistical-discord-bot/issues"
+  },
+  "homepage": "https://github.com/BearmanCodes/Egotistical-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "random-words": "^1.1.1"
+  }
+}
