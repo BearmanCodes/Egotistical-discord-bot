@@ -7,7 +7,24 @@ client.once('ready', () => {
     console.log("I'm always ready you jerk, I bet you are never ready. stupid idiot face.");
 })
 
-client.on('message', message => {
+client.on('message', async message => {
+    async function playAmogus(){
+        if (message.member.voice.channel){
+            const connection = await message.member.voice.channel.join();
+                
+            const dispatcher = connection.play("AMOGUS.mp3");
+            dispatcher.on('error', console.error);
+            dispatcher.destroy();
+        }
+        else{
+            message.channel.send("You absoulte imbecile. You actually thought I could speak when I have no place to speak into. You non Rick and Morty fans with your IQ below 7892. You will never understand how to be a normal person you idiot!");
+        }
+    }
+
+    if (message.content.startsWith(`${process.env.PREFIX}amogus`)){
+        playAmogus();
+    }
+
     if (message.content.startsWith(`${process.env.PREFIX}ego`)){
         var beginningMessageArray = [
             "For starters, I am me and you are you ",
@@ -28,6 +45,7 @@ client.on('message', message => {
         var messageEgo = beginningMessageArray[Math.floor(Math.random() * beginningMessageArray.length)] + randomSentence;
         message.channel.send(messageEgo);
     }
-})
+});
+
 
 client.login(process.env.TOKEN);
