@@ -27,6 +27,28 @@ client.on('message', message => {
 
     }
 
+    if (message.content.startsWith(`${process.env['PREFIX']}playfart`)){
+        async function playFart()
+        {
+            if (message.member.voice.channel){
+                var fartNum = Math.floor(Math.random() * 48);
+                var fartMp3 = "https://github.com/BearmanCodes/Egotistical-discord-bot/raw/master/audio/farts/" + fartNum + ".mp3";
+                const connection = await message.member.voice.channel.join();
+                const dispatcher = connection.play(fartMp3);
+
+                dispatcher.on('finish', () => {
+                    dispatcher.destroy();
+                })
+                dispatcher.on('error', () => {
+                    console.error
+                    dispatcher.destroy();
+                });
+                dispatcher.destroy();
+            }
+        }
+        playFart();
+    }
+
     
 });
 
