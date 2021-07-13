@@ -1,3 +1,12 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Bot Up'));
+
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
+
+// Start the discord bot code
 const Discord = require('discord.js');
 const randomWords = require('random-words');
 require('dotenv').config();
@@ -10,9 +19,9 @@ client.once('ready', () => {
 client.on('message', message => {
     const guild = message.channel.guild;
 
-    if (message.content.startsWith(`${process.env.PREFIX}fart`)){
+    if (message.content.startsWith(`${process.env['PREFIX']}fart`)){
         var fartNum = Math.floor(Math.random() * 48);
-        var fartMp3 = "C:/Users/Elijah/Desktop/GitHub/Egotistical-discord-bot/audio/farts/" + fartNum + ".mp3";
+        var fartMp3 = "https://github.com/BearmanCodes/Egotistical-discord-bot/raw/master/audio/farts/" + fartNum + ".mp3";
 
         message.channel.send("", { files: [fartMp3] });
 
@@ -22,4 +31,5 @@ client.on('message', message => {
 });
 
 
-client.login(process.env.TOKEN);
+client.login(process.env['TOKEN']);
+
