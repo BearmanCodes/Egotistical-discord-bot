@@ -17,7 +17,14 @@ client.once('ready', () => {
 })
 
 client.on('message', message => {
-    const guild = message.channel.guild;
+    const guild = message.member.guild;
+    //guild.members.cache.find
+    
+    if (message.content.startsWith(`${process.env['PREFIX']}pin`)){
+        const member = guild.members.cache.find(mem => mem.user.username.toLowerCase().trim() == message.content.toLowerCase().replace(`${process.env['PREFIX']}pin`, '').substring(1));
+        console.log(message.content.replace(`${process.env['PREFIX']}pin`, ''));
+        console.log(member);
+    };
 
     if (message.content.startsWith(`${process.env['PREFIX']}fart`)){
         var fartNum = Math.floor(Math.random() * 48);
