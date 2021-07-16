@@ -21,9 +21,17 @@ client.on('message', message => {
     //guild.members.cache.find
     
     if (message.content.startsWith(`${process.env['PREFIX']}pin`)){
-        const member = guild.members.cache.find(mem => mem.user.username.toLowerCase().trim() == message.content.toLowerCase().replace(`${process.env['PREFIX']}pin`, '').substring(1));
-        console.log(message.content.replace(`${process.env['PREFIX']}pin`, ''));
-        console.log(member);
+        // I made a get member thing here. Might use this later so I'm gonna use it here but it's useless for pinning.
+        /*
+        var messageLower = message.content.toLowerCase();   
+        var withoutPrefix = messageLower.replace(`${process.env['PREFIX']}pin`, '').substring(1);
+        const member = guild.members.cache.find(mem => mem.user.username.toLowerCase().trim() == withoutPrefix);
+        */
+        var messageLower = message.content.toLowerCase();   
+        var withoutPrefix = messageLower.replace(`${process.env['PREFIX']}pin`, '').substring(1).trim();
+        console.log(message.channel.messages.fetch(withoutPrefix).then(
+            message => message.pin()
+        ));
     };
 
     if (message.content.startsWith(`${process.env['PREFIX']}fart`)){
